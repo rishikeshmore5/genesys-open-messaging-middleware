@@ -1,6 +1,9 @@
 // A simple in-memory map for testing: customerId -> conversationId
 export const activeConversations = new Map();
 
+// NEW: Store pending agent/bot text messages for frontend polling
+export const messageStore = new Map();
+
 export async function handleWebhook(req, res) {
     try {
         const event = req.body;
@@ -29,6 +32,16 @@ export async function handleWebhook(req, res) {
                 console.log(`[Session Created] Linked customer ${customerId} to conversation ${conversationId}`);
             }
             
+            // NEW: Push text into the messageStore for the frontend polling mechanism
+            if (!messageStore.has(customerId)) {
+                messageStore.set(customerId, []);
+            }
+
+            messageStore.get(customerId).push({
+                sender: senderType === "User" || senderType === "Bot" ? "agent" : "customer",
+                text: messageText,
+                timestamp: new Date().toISOString()
+            });
             // TODO: Here you would push this message to your user interface (via WebSockets or long polling)
         }
 
