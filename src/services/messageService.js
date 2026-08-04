@@ -38,5 +38,7 @@ export async function sendMessage(message) {
 
     );
 
+console.log(strigify(response.data));
+                
     return response.data;
 }
