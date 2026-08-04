@@ -7,7 +7,7 @@ export const messageStore = new Map();
 export async function handleWebhook(req, res) {
     try {
         const event = req.body;
-        
+        console.log("Webhook Request:\n", JSON.stringify(req.body, null, 2)) ;
         // Always respond 200 OK immediately
         res.sendStatus(200);
 
