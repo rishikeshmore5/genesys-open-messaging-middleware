@@ -38,7 +38,7 @@ export async function sendMessage(message) {
 
     );
 
-console.log(response.data);
+console.log("message response 123 : "+response.data);
                 
     return response.data;
 }
