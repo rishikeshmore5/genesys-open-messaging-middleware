@@ -17,10 +17,17 @@ export async function sendMessage(message) {
                 lastName: message.lastName
             },
             time: new Date().toISOString(),
-            messageId: uuid()
+            messageId: uuid(), 
+            metadata: {
+                test1:"820"
+            }
+            
         },
 
-        text: message.text
+        text: message.text, 
+          metadata: {
+                test2:"844"
+          }
     };
 
     const response = await axios.post(
