@@ -17,8 +17,12 @@ export async function sendMessage(message) {
                 lastName: message.lastName
             },
             time: new Date().toISOString(),
-            messageId: uuid()
-            
+            messageId: uuid(), 
+            metadata : {
+                customAttributes:{
+                    test:"820"
+                }
+            }
         },
 
         text: message.text
