@@ -9,6 +9,7 @@ export async function postMessage(req, res) {
     customerId: req.body.customerId,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    test:req.body.test, 
     text: req.body.text
 };
         const response = await sendMessage(message);
