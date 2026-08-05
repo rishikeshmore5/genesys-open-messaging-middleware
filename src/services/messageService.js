@@ -20,7 +20,7 @@ export async function sendMessage(message) {
             messageId: uuid(), 
             metadata : {
                 customAttributes:{
-                    test:"820"
+                    test:message.test
                 }
             }
         },
